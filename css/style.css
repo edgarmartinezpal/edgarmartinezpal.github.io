@@ -1,12 +1,17 @@
 :root {
-    --primary-color: #00a8ff; /* Un azul vibrante que resalta en la oscuridad */
-    --secondary-color: #1e272e; /* Un gris oscuro casi negro para fondos principales */
-    --background-color: #121212; /* Fondo principal oscuro */
-    --card-background: #1e272e; /* Color para las tarjetas */
-    --text-color: #ecf0f1; /* Texto principal claro */
-    --heading-color: #ffffff; /* Color para los encabezados */
+    /* Paleta de Terminal Retro: Fondo oscuro y texto de un solo color */
+    --primary-color: #00ff00; /* Verde brillante de terminal */
+    --secondary-color: #008000; /* Un verde más oscuro para acentos/hover */
+    --background-color: #0d0d0d; /* Fondo negro profundo */
+    --card-background: #1a1a1a; /* Fondo para secciones/tarjetas */
+    --text-color: #00ff00; /* Texto principal: Verde brillante */
+    --heading-color: #00ff00; /* Encabezados: Verde brillante */
+    --border-color: #008000; /* Borde sutil, un verde oscuro */
 }
 
+/* * FUENTE: Esencial para el estilo de terminal 
+ * Se recomienda encarecidamente usar una fuente monoespaciada como 'Monospace', 'Courier New', o 'Fira Code' si se puede cargar.
+ */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,10 +19,13 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    /* ¡La clave del look de terminal! */
+    font-family: 'Courier New', monospace; 
+    line-height: 1.5; /* Ligeramente más compacto */
     background-color: var(--background-color);
     color: var(--text-color);
+    /* El "efecto de pantalla" sutil */
+    text-shadow: 0 0 5px var(--primary-color); 
 }
 
 .container {
@@ -25,17 +33,27 @@ body {
     margin: auto;
     overflow: hidden;
     padding: 0 2rem;
+    /* Un borde que "enmarca" la pantalla */
+    border: 2px solid var(--border-color);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
+/* * HEADER y NAV 
+ * Un look plano y sin florituras
+ */
 header {
-    background: var(--secondary-color);
-    color: #fff;
+    background: var(--background-color); /* Usamos el fondo principal para que sea discreto */
+    color: var(--text-color);
     padding: 1rem 0;
-    position: sticky;
-    top: 0;
+    position: static; /* Quitamos el sticky, las terminales no suelen tener eso */
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: none; /* ¡Fuera sombras! */
+    border-bottom: 2px solid var(--border-color); /* Línea de separación marcada */
+    margin-bottom: 1rem;
 }
 
 nav {
@@ -45,7 +63,12 @@ nav {
 }
 
 .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Más pequeño, como el texto de una terminal */
+    /* Simulación de un prompt de terminal */
+    &::before {
+        content: '[user@host ~]$ ';
+        color: var(--secondary-color);
+    }
 }
 
 .nav-links {
@@ -58,13 +81,17 @@ nav {
 }
 
 .nav-links a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: background-color 0.1s ease;
+    /* La clave del hover: simular la selección de texto */
+    padding: 2px 5px; 
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--background-color); /* Texto se vuelve oscuro... */
+    background-color: var(--primary-color); /* ...sobre un fondo brillante */
+    border: 1px solid var(--primary-color);
 }
 
 .burger {
@@ -73,173 +100,211 @@ nav {
 }
 
 .burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px;
-    transition: all 0.3s ease;
+    /* Los iconos de hamburguesa no encajan, los quitamos */
+    display: none;
 }
 
+/* * HERO 
+ * Sencillo, sin imágenes de fondo
+ */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
-    height: 90vh;
+    background: var(--background-color); /* Fondo negro puro */
+    /* Eliminamos la imagen con el degradado */
+    background-image: none !important; 
+    height: auto; /* Altura dinámica */
+    padding: 5rem 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
+    justify-content: flex-start; /* Alinear a la izquierda */
+    align-items: flex-start;
+    text-align: left;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .hero-container h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--secondary-color); /* Subrayado punteado */
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
 .hero-container p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
+/* * BOTONES 
+ * Estilo de botón en modo texto/selección
+ */
 .btn {
     display: inline-block;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 0.8rem 1.5rem;
+    background: var(--background-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 0; /* Bordes cuadrados */
+    border: 2px solid var(--primary-color); /* Borde marcado */
+    transition: background-color 0.1s ease, color 0.1s ease;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .btn:hover {
-    background: #007bb5;
+    background: var(--primary-color); /* Invertir colores al hacer hover */
+    color: var(--background-color);
 }
 
+/* * SECCIONES 
+ */
 section {
-    padding: 4rem 0;
-    border-bottom: 1px solid #333;
+    padding: 3rem 0;
+    border-bottom: 2px solid var(--border-color); /* Línea de separación fuerte */
 }
 
 section:last-of-type {
-    border-bottom: none;
+    border-bottom: 2px solid var(--border-color); /* Asegurar el borde */
 }
 
 section h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+    text-align: left; /* Títulos alineados a la izquierda */
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
     color: var(--heading-color);
+    /* Simulación de línea de comando como título */
+    &::before {
+        content: ' > ';
+        color: var(--secondary-color);
+    }
 }
 
 .skills-grid, .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex; /* Cambiamos a flexbox para un flujo más lineal de terminal */
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .skill-card, .project-card {
     background: var(--card-background);
-    padding: 2rem;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1.5rem;
+    text-align: left; /* Texto alineado a la izquierda */
+    border-radius: 0; /* Bordes cuadrados */
+    border: 1px solid var(--primary-color); /* Borde de tarjeta marcado */
+    box-shadow: none; /* ¡Fuera sombras! */
+    transition: all 0.1s ease;
+    flex: 1 1 300px; /* Distribución flexible */
 }
 
 .skill-card:hover, .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transform: none; /* Quitamos la elevación */
+    box-shadow: 0 0 10px var(--primary-color); /* Simulación de un resplandor al hacer hover */
+    background: var(--secondary-color);
+    cursor: text;
+}
+
+.skill-card h3, .project-card h3 {
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .skill-card img {
-    height: 80px;
-    margin-bottom: 1rem;
-    filter: grayscale(30%) brightness(90%); /* Ajuste para que los logos se vean bien en fondo oscuro */
+    /* Las imágenes suelen quedar fuera de lugar. Las ocultamos o ajustamos */
+    display: none; 
 }
 
 .project-links {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    /* Típico indicador de enlace */
+    & a::before {
+        content: 'LNK: ';
+        color: var(--secondary-color);
+    }
 }
 
 .project-links a {
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0 0;
     text-decoration: none;
     color: var(--primary-color);
-    font-weight: bold;
+    font-weight: normal;
 }
 
+/* * CONTACTO 
+ */
 #contacto {
-    background: var(--secondary-color);
+    background: var(--background-color); /* Usamos el fondo principal */
 }
 
 .contact-container {
-    text-align: center;
+    text-align: left; /* Alinear a la izquierda */
 }
 
 .contact-container p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .contact-links .contact-btn {
-    margin: 0.5rem;
-    min-width: 150px;
+    margin: 0 0.5rem 0.5rem 0;
+    min-width: 120px;
 }
 
+/* * FOOTER 
+ */
 footer {
-    background: #111;
-    color: #aaa;
+    background: var(--background-color);
+    color: var(--secondary-color);
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    border-top: 2px solid var(--border-color);
 }
 
+/* * MEDIA QUERIES (Ajuste para la vista móvil) 
+ */
 @media screen and (max-width: 768px) {
+    .container {
+        border: none;
+        margin: 0;
+        padding: 0 1rem;
+    }
+    
+    .logo h1::before {
+        content: ' > ';
+    }
+    
+    /* Adaptación del menú para móvil: Desactivamos la animación compleja */
     .nav-links {
-        position: absolute;
-        right: 0;
-        height: 92vh;
-        top: 8vh;
-        background: var(--secondary-color);
+        position: static;
+        height: auto;
+        top: auto;
+        background: none;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 50%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
+        flex-direction: row;
+        width: auto;
+        transform: none;
+        transition: none;
     }
 
     .nav-links li {
-        opacity: 0;
+        opacity: 1;
+        padding: 0 0.5rem;
     }
 
     .burger {
-        display: block;
+        display: none;
     }
 
+    /* Eliminamos todas las animaciones y transformaciones */
     .nav-active {
-        transform: translateX(0%);
+        transform: none;
     }
-
-    @keyframes navLinkFade {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0px);
-        }
-    }
-
-    .toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .toggle .line2 {
-        opacity: 0;
-    }
-
-    .toggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
+    @keyframes navLinkFade { /* Se elimina */ }
+    .toggle .line1, .toggle .line2, .toggle .line3 { /* Se elimina */ }
 }
