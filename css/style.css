@@ -1,8 +1,10 @@
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2c3e50;
-    --background-color: #ecf0f1;
-    --text-color: #333;
+    --primary-color: #00a8ff; /* Un azul vibrante que resalta en la oscuridad */
+    --secondary-color: #1e272e; /* Un gris oscuro casi negro para fondos principales */
+    --background-color: #121212; /* Fondo principal oscuro */
+    --card-background: #1e272e; /* Color para las tarjetas */
+    --text-color: #ecf0f1; /* Texto principal claro */
+    --heading-color: #ffffff; /* Color para los encabezados */
 }
 
 * {
@@ -33,6 +35,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 nav {
@@ -78,7 +81,7 @@ nav {
 }
 
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -105,20 +108,27 @@ nav {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 .btn:hover {
-    background: #2980b9;
+    background: #007bb5;
 }
 
 section {
     padding: 4rem 0;
+    border-bottom: 1px solid #333;
+}
+
+section:last-of-type {
+    border-bottom: none;
 }
 
 section h2 {
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2.5rem;
+    color: var(--heading-color);
 }
 
 .skills-grid, .projects-grid {
@@ -128,21 +138,23 @@ section h2 {
 }
 
 .skill-card, .project-card {
-    background: #fff;
+    background: var(--card-background);
     padding: 2rem;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card:hover, .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .skill-card img {
     height: 80px;
     margin-bottom: 1rem;
+    filter: grayscale(30%) brightness(90%); /* Ajuste para que los logos se vean bien en fondo oscuro */
 }
 
 .project-links {
@@ -156,31 +168,29 @@ section h2 {
     font-weight: bold;
 }
 
-#contacto form {
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+#contacto {
+    background: var(--secondary-color);
 }
 
-#contacto input, #contacto textarea {
-    margin-bottom: 1rem;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.contact-container {
+    text-align: center;
+}
+
+.contact-container p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.contact-links .contact-btn {
+    margin: 0.5rem;
+    min-width: 150px;
 }
 
 footer {
-    background: var(--secondary-color);
-    color: #fff;
+    background: #111;
+    color: #aaa;
     text-align: center;
     padding: 2rem 0;
-}
-
-.social-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 0.5rem;
 }
 
 @media screen and (max-width: 768px) {
