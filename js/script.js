@@ -1,24 +1,25 @@
-const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
+document.addEventListener('DOMContentLoaded', () => {
+    // Selecciona todos los enlaces de anclaje (los que empiezan por #)
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
 
-    burger.addEventListener('click', () => {
-        // Toggle Nav
-        nav.classList.toggle('nav-active');
+    smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            // Previene el comportamiento de salto predeterminado del ancla
+            e.preventDefault();
 
-        // Animate Links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+            // Obtiene el ID del destino (ej: "#inicio", "#proyectos")
+            const targetId = this.getAttribute('href');
+
+            // Encuentra el elemento de destino
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Realiza el scroll suave
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70, // -70px para dejar espacio para la cabecera fija
+                    behavior: 'smooth'
+                });
             }
         });
-
-        // Burger Animation
-        burger.classList.toggle('toggle');
     });
-}
-
-navSlide();
+});
