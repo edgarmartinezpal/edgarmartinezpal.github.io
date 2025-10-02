@@ -1,310 +1,261 @@
+/* VARIABLES GLOBALES Y RESET */
 :root {
-    /* Paleta de Terminal Retro: Fondo oscuro y texto de un solo color */
-    --primary-color: #00ff00; /* Verde brillante de terminal */
-    --secondary-color: #008000; /* Un verde más oscuro para acentos/hover */
-    --background-color: #0d0d0d; /* Fondo negro profundo */
-    --card-background: #1a1a1a; /* Fondo para secciones/tarjetas */
-    --text-color: #00ff00; /* Texto principal: Verde brillante */
-    --heading-color: #00ff00; /* Encabezados: Verde brillante */
-    --border-color: #008000; /* Borde sutil, un verde oscuro */
+    --color-bg-dark: #121212; /* Fondo principal oscuro */
+    --color-surface: #1E1E1E; /* Fondo de tarjetas/secciones */
+    --color-text-light: #E0E0E0; /* Texto principal claro */
+    --color-accent-green: #00FF88; /* Color de acento (verde tecnológico) */
+    --color-accent-hover: #00CC6A;
+    --color-text-secondary: #999999;
+    --font-primary: 'Roboto', sans-serif;
 }
 
-/* * FUENTE: Esencial para el estilo de terminal 
- * Se recomienda encarecidamente usar una fuente monoespaciada como 'Monospace', 'Courier New', o 'Fira Code' si se puede cargar.
- */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    /* ¡La clave del look de terminal! */
-    font-family: 'Courier New', monospace; 
-    line-height: 1.5; /* Ligeramente más compacto */
-    background-color: var(--background-color);
-    color: var(--text-color);
-    /* El "efecto de pantalla" sutil */
-    text-shadow: 0 0 5px var(--primary-color); 
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 2rem;
-    /* Un borde que "enmarca" la pantalla */
-    border: 2px solid var(--border-color);
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* * HEADER y NAV 
- * Un look plano y sin florituras
- */
+/* TIPOGRAFÍA */
+h1 { font-size: 3.5rem; }
+h2 { 
+    font-size: 2.5rem; 
+    color: var(--color-accent-green);
+    margin-bottom: 40px;
+    text-align: center;
+}
+h3 { font-size: 1.5rem; }
+p { font-size: 1.1rem; }
+
+/* ENLACES Y BOTONES */
+a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-accent-green);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn.primary {
+    background-color: var(--color-accent-green);
+    color: var(--color-bg-dark); /* Texto oscuro sobre acento claro */
+}
+
+.btn.primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-accent-green);
+    color: var(--color-accent-green);
+}
+
+.btn.secondary:hover {
+    background-color: var(--color-accent-green);
+    color: var(--color-bg-dark);
+}
+
+/* NAVEGACIÓN (HEADER) */
 header {
-    background: var(--background-color); /* Usamos el fondo principal para que sea discreto */
-    color: var(--text-color);
-    padding: 1rem 0;
-    position: static; /* Quitamos el sticky, las terminales no suelen tener eso */
-    width: 100%;
+    background-color: var(--color-surface);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    box-shadow: none; /* ¡Fuera sombras! */
-    border-bottom: 2px solid var(--border-color); /* Línea de separación marcada */
-    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-nav {
+.nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo h1 {
-    font-size: 1.2rem; /* Más pequeño, como el texto de una terminal */
-    /* Simulación de un prompt de terminal */
-    &::before {
-        content: '[user@host ~]$ ';
-        color: var(--secondary-color);
-    }
+.logo {
+    font-size: 1.8rem;
+    color: var(--color-accent-green);
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
+nav a {
+    margin-left: 25px;
+    font-weight: 500;
 }
 
-.nav-links li {
-    padding: 0 1rem;
-}
-
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: background-color 0.1s ease;
-    /* La clave del hover: simular la selección de texto */
-    padding: 2px 5px; 
-}
-
-.nav-links a:hover {
-    color: var(--background-color); /* Texto se vuelve oscuro... */
-    background-color: var(--primary-color); /* ...sobre un fondo brillante */
-    border: 1px solid var(--primary-color);
-}
-
-.burger {
-    display: none;
-    cursor: pointer;
-}
-
-.burger div {
-    /* Los iconos de hamburguesa no encajan, los quitamos */
-    display: none;
-}
-
-/* * HERO 
- * Sencillo, sin imágenes de fondo
- */
-#hero {
-    background: var(--background-color); /* Fondo negro puro */
-    /* Eliminamos la imagen con el degradado */
-    background-image: none !important; 
-    height: auto; /* Altura dinámica */
-    padding: 5rem 0;
-    display: flex;
-    justify-content: flex-start; /* Alinear a la izquierda */
-    align-items: flex-start;
-    text-align: left;
-    color: var(--text-color);
-    border-bottom: 2px solid var(--border-color);
-}
-
-.hero-container h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px dashed var(--secondary-color); /* Subrayado punteado */
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-.hero-container p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}
-
-/* * BOTONES 
- * Estilo de botón en modo texto/selección
- */
-.btn {
-    display: inline-block;
-    background: var(--background-color);
-    color: var(--text-color);
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 0; /* Bordes cuadrados */
-    border: 2px solid var(--primary-color); /* Borde marcado */
-    transition: background-color 0.1s ease, color 0.1s ease;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.btn:hover {
-    background: var(--primary-color); /* Invertir colores al hacer hover */
-    color: var(--background-color);
-}
-
-/* * SECCIONES 
- */
+/* SECCIONES BASE */
 section {
-    padding: 3rem 0;
-    border-bottom: 2px solid var(--border-color); /* Línea de separación fuerte */
+    padding: 100px 0;
 }
 
-section:last-of-type {
-    border-bottom: 2px solid var(--border-color); /* Asegurar el borde */
+section:nth-child(odd) {
+    background-color: var(--color-surface); /* Alterna el color de fondo */
 }
 
-section h2 {
-    text-align: left; /* Títulos alineados a la izquierda */
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    color: var(--heading-color);
-    /* Simulación de línea de comando como título */
-    &::before {
-        content: ' > ';
-        color: var(--secondary-color);
-    }
-}
-
-.skills-grid, .projects-grid {
-    display: flex; /* Cambiamos a flexbox para un flujo más lineal de terminal */
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.skill-card, .project-card {
-    background: var(--card-background);
-    padding: 1.5rem;
-    text-align: left; /* Texto alineado a la izquierda */
-    border-radius: 0; /* Bordes cuadrados */
-    border: 1px solid var(--primary-color); /* Borde de tarjeta marcado */
-    box-shadow: none; /* ¡Fuera sombras! */
-    transition: all 0.1s ease;
-    flex: 1 1 300px; /* Distribución flexible */
-}
-
-.skill-card:hover, .project-card:hover {
-    transform: none; /* Quitamos la elevación */
-    box-shadow: 0 0 10px var(--primary-color); /* Simulación de un resplandor al hacer hover */
-    background: var(--secondary-color);
-    cursor: text;
-}
-
-.skill-card h3, .project-card h3 {
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--secondary-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.skill-card img {
-    /* Las imágenes suelen quedar fuera de lugar. Las ocultamos o ajustamos */
-    display: none; 
-}
-
-.project-links {
-    margin-top: 1rem;
-    /* Típico indicador de enlace */
-    & a::before {
-        content: 'LNK: ';
-        color: var(--secondary-color);
-    }
-}
-
-.project-links a {
-    margin: 0 0.5rem 0 0;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: normal;
-}
-
-/* * CONTACTO 
- */
-#contacto {
-    background: var(--background-color); /* Usamos el fondo principal */
-}
-
-.contact-container {
-    text-align: left; /* Alinear a la izquierda */
-}
-
-.contact-container p {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-}
-
-.contact-links {
+/* SECCIÓN INICIO/HERO */
+.hero {
+    min-height: 80vh;
     display: flex;
-    flex-wrap: wrap;
-}
-
-.contact-links .contact-btn {
-    margin: 0 0.5rem 0.5rem 0;
-    min-width: 120px;
-}
-
-/* * FOOTER 
- */
-footer {
-    background: var(--background-color);
-    color: var(--secondary-color);
+    align-items: center;
     text-align: center;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    border-top: 2px solid var(--border-color);
+    padding-top: 150px;
 }
 
-/* * MEDIA QUERIES (Ajuste para la vista móvil) 
- */
-@media screen and (max-width: 768px) {
-    .container {
-        border: none;
-        margin: 0;
-        padding: 0 1rem;
+.hero h1 {
+    color: var(--color-accent-green);
+    margin-bottom: 10px;
+}
+
+.hero .rol {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.hero .tagline {
+    font-size: 1.3rem;
+    margin-top: 30px;
+}
+
+
+/* SECCIÓN HABILIDADES */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.skill-card {
+    background-color: var(--color-bg-dark);
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid var(--color-accent-green);
+    transition: transform 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 255, 136, 0.1);
+}
+
+.skill-card i {
+    font-size: 3rem;
+    color: var(--color-accent-green);
+    margin-bottom: 15px;
+}
+
+/* SECCIÓN PROYECTOS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--color-bg-dark);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+    color: var(--color-accent-green);
+    margin-bottom: 10px;
+}
+
+.project-link {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* SECCIÓN CONTACTO */
+#contacto {
+    text-align: center;
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#contact-form input, #contact-form textarea {
+    padding: 15px;
+    border: 1px solid var(--color-text-secondary);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    border-radius: 5px;
+}
+
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    font-size: 2.5rem;
+    margin: 0 15px;
+}
+
+
+/* PIE DE PÁGINA */
+footer {
+    background-color: #000000;
+    text-align: center;
+    padding: 30px 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ADAPTACIÓN A MÓVILES */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    .nav-content {
+        flex-direction: column;
     }
     
-    .logo h1::before {
-        content: ' > ';
-    }
-    
-    /* Adaptación del menú para móvil: Desactivamos la animación compleja */
-    .nav-links {
-        position: static;
-        height: auto;
-        top: auto;
-        background: none;
-        display: flex;
-        flex-direction: row;
-        width: auto;
-        transform: none;
-        transition: none;
+    nav {
+        margin-top: 10px;
     }
 
-    .nav-links li {
-        opacity: 1;
-        padding: 0 0.5rem;
+    nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
     }
 
-    .burger {
-        display: none;
+    .hero {
+        min-height: 50vh;
+        padding-top: 100px;
     }
-
-    /* Eliminamos todas las animaciones y transformaciones */
-    .nav-active {
-        transform: none;
-    }
-    @keyframes navLinkFade { /* Se elimina */ }
-    .toggle .line1, .toggle .line2, .toggle .line3 { /* Se elimina */ }
 }
