@@ -3,119 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edgar Martínez Palacios - Desarrollador Web y Multiplataforma</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Edgar Martínez Palacios - Desarrollador Full Stack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
     <header>
-        <nav>
-            <div class="logo">
-                <h1>Edgar Martínez Palacios</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </nav>
+        <div class="container nav-content">
+            <h1 class="logo">Edgar M. P.</h1>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-mi">Sobre Mí</a>
+                <a href="#habilidades">Skills</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section id="hero">
-            <div class="hero-container">
-                <h2>Hola, soy Edgar Martínez Palacios</h2>
-                <p>Desarrollador de Aplicaciones Web y Multiplataforma especializado en el ecosistema JavaScript.</p>
-                <a href="#proyectos" class="btn">Ver mis proyectos</a>
-            </div>
-        </section>
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>¡Hola! Soy</h2>
+            <h1>Edgar Martínez Palacios</h1>
+            <p class="rol">Programador de Aplicaciones Web y Multiplataforma</p>
+            <p class="tagline">Construyendo soluciones sólidas con el ecosistema MERN y SQL.</p>
+            <a href="#proyectos" class="btn primary">Ver Mis Proyectos</a>
+        </div>
+    </section>
 
-        <section id="sobre-mi">
-            <div class="container">
-                <h2>Sobre mí</h2>
-                <p>Soy un apasionado desarrollador con experiencia en la creación de aplicaciones web modernas y eficientes. Mi objetivo es construir soluciones tecnológicas que aporten valor y ofrezcan una gran experiencia de usuario. Disfruto aprendiendo nuevas tecnologías y trabajando en equipo para superar retos complejos.</p>
+    <section id="sobre-mi">
+        <div class="container">
+            <h2>Sobre Mí</h2>
+            <div class="bio-content">
+                <p>Soy **Edgar Martínez Palacios**, un desarrollador apasionado con experiencia en la creación de aplicaciones web robustas y soluciones multiplataforma.</p>
+                <p>Mi enfoque principal se centra en el **stack MERN** (MongoDB, Express, React, Node.js), lo que me permite ofrecer soluciones Full Stack completas. Mi conocimiento se complementa con el manejo de bases de datos **SQL** (MySQL, PostgreSQL), asegurando una gestión de datos eficiente y escalable para cualquier tipo de proyecto.</p>
+                <p>Estoy comprometido con el aprendizaje continuo y la entrega de código limpio y optimizado.</p>
+                <a href="#" class="btn secondary" download>Descargar CV</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="habilidades">
-            <div class="container">
-                <h2>Habilidades Técnicas</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
-                        <h3>React</h3>
-                    </div>
-                    <div class="skill-card">
-                        <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB">
-                        <h3>MongoDB</h3>
-                    </div>
-                    <div class="skill-card">
-                        <img src="https://www.svgrepo.com/show/303229/sql-database-sql-logo.svg" alt="SQL">
-                        <h3>SQL</h3>
-                    </div>
-                    <div class="skill-card">
-                        <img src="https://nodejs.org/static/images/logo.svg" alt="Node.js">
-                        <h3>Node.js</h3>
-                    </div>
+    <section id="habilidades">
+        <div class="container">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-react"></i>
+                    <h3>React</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-node-js"></i>
+                    <h3>Node.js</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>MongoDB</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h3>SQL</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML & CSS</h3>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="proyectos">
-            <div class="container">
-                <h2>Mis Proyectos</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Proyecto 1: Nombre del Proyecto</h3>
-                        <p>Breve descripción del proyecto. Tecnologías utilizadas y el propósito de la aplicación.</p>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Ver Demo</a>
-                            <a href="#" target="_blank">Código en GitHub</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Proyecto 2: Nombre del Proyecto</h3>
-                        <p>Breve descripción del proyecto. Tecnologías utilizadas y el propósito de la aplicación.</p>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Ver Demo</a>
-                            <a href="#" target="_blank">Código en GitHub</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Proyecto 3: Nombre del Proyecto</h3>
-                        <p>Breve descripción del proyecto. Tecnologías utilizadas y el propósito de la aplicación.</p>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Ver Demo</a>
-                            <a href="#" target="_blank">Código en GitHub</a>
-                        </div>
-                    </div>
-                </div>
+    <section id="proyectos">
+        <div class="container">
+            <h2>Proyectos Destacados</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>App de Gestión MERN</h3>
+                    <p>Aplicación full-stack para la administración de tareas y usuarios.</p>
+                    <a href="#" target="_blank" class="project-link">Ver Código &rarr;</a>
+                </article>
+                <article class="project-card">
+                    <h3>API RESTful con Node.js y SQL</h3>
+                    <p>Backend de alto rendimiento construido con Node.js y PostgreSQL.</p>
+                    <a href="#" target="_blank" class="project-link">Ver Código &rarr;</a>
+                </article>
+                <article class="project-card">
+                    <h3>Dashboard Multiplataforma (React)</h3>
+                    <p>Interfaz de usuario con alto nivel de interactividad y diseño responsive.</p>
+                    <a href="#" target="_blank" class="project-link">Ver Código &rarr;</a>
+                </article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contacto">
-            <div class="container contact-container">
-                <h2>Conecta conmigo</h2>
-                <p>Puedes encontrarme en las siguientes plataformas. ¡Estaré encantado de hablar contigo!</p>
-                <div class="contact-links">
-                    <a href="https://linkedin.com/in/tu-usuario" class="btn contact-btn" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/tu-usuario" class="btn contact-btn" target="_blank">GitHub</a>
-                </div>
+    <section id="contacto">
+        <div class="container">
+            <h2>Contáctame</h2>
+            <p>¿Tienes un proyecto en mente o quieres saber más? Hablemos.</p>
+            
+            <form id="contact-form">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Email" required>
+                <textarea placeholder="Tu Mensaje" rows="5" required></textarea>
+                <button type="submit" class="btn primary">Enviar Mensaje</button>
+            </form>
+
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:tuemail@dominio.com"><i class="fas fa-envelope"></i></a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Edgar Martínez Palacios</p>
+            <p>&copy; 2024 Edgar Martínez Palacios. Desarrollador Web y Multiplataforma.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
