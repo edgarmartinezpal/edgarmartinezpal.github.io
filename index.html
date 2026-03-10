@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="imagenes/foto-perfil-edgar.jpg">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -43,36 +44,47 @@
     <section id="inicio" class="hero">
         <canvas id="particles-canvas"></canvas>
         <div class="hero-content container">
-            <p class="hero-greeting">👋 Hola, soy</p>
-            <h1 class="hero-name">Edgar Martínez<br><span class="highlight">Palacios</span></h1>
-            <div class="hero-role">
-                <span class="role-prefix">&gt;_ </span>
-                <span id="typed-role"></span><span class="cursor-blink">|</span>
+            <div class="hero-text">
+                <p class="hero-greeting">👋 Hola, soy</p>
+                <h1 class="hero-name">Edgar Martínez<br><span class="highlight">Palacios</span></h1>
+                <div class="hero-role">
+                    <span class="role-prefix">&gt;_ </span>
+                    <span id="typed-role"></span><span class="cursor-blink">|</span>
+                </div>
+                <p class="hero-tagline">Construyendo soluciones sólidas con el ecosistema <strong>MERN</strong> y <strong>SQL</strong>.</p>
+                <div class="hero-cta">
+                    <a href="#proyectos" class="btn primary">
+                        <i class="fas fa-rocket"></i> Ver Proyectos
+                    </a>
+                    <a href="#contacto" class="btn secondary">
+                        <i class="fas fa-paper-plane"></i> Contactar
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="age-display">—</span>
+                        <span class="stat-label">Años</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number" id="months-display">—</span>
+                        <span class="stat-label">Meses estudiando</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Proyecto público</span>
+                    </div>
+                </div>
             </div>
-            <p class="hero-tagline">Construyendo soluciones sólidas con el ecosistema <strong>MERN</strong> y <strong>SQL</strong>.</p>
-            <div class="hero-cta">
-                <a href="#proyectos" class="btn primary">
-                    <i class="fas fa-rocket"></i> Ver Proyectos
-                </a>
-                <a href="#contacto" class="btn secondary">
-                    <i class="fas fa-paper-plane"></i> Contactar
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number" id="age-display">—</span>
-                    <span class="stat-label">Años</span>
+            <div class="hero-photo" aria-hidden="true">
+                <div class="photo-ring-outer"></div>
+                <div class="photo-ring-inner"></div>
+                <div class="photo-frame" id="open-lightbox" title="Ver foto">
+                    <img src="imagenes/foto-perfil-edgar.jpg" alt="Edgar Martínez Palacios" class="profile-img">
+                    <div class="photo-expand-hint"><i class="fas fa-expand"></i></div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number" id="months-display">—</span>
-                    <span class="stat-label">Meses estudiando</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">1</span>
-                    <span class="stat-label">Proyecto público</span>
-                </div>
+                <div class="photo-badge"><i class="fab fa-react fa-spin-slow"></i></div>
             </div>
         </div>
         <div class="hero-scroll-hint">
@@ -295,6 +307,17 @@
             </a>
         </div>
     </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto de perfil ampliada">
+        <div id="lightbox-backdrop"></div>
+        <div id="lightbox-content">
+            <img src="imagenes/foto-perfil-edgar.jpg" alt="Edgar Martínez Palacios" id="lightbox-img">
+        </div>
+        <button id="lightbox-close" aria-label="Cerrar">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

@@ -369,4 +369,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ─────────────────────────────────────────
+    // 15. LIGHTBOX (foto de perfil)
+    // ─────────────────────────────────────────
+    const lightbox         = document.getElementById('lightbox');
+    const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+    const lightboxClose    = document.getElementById('lightbox-close');
+    const openTrigger      = document.getElementById('open-lightbox');
+
+    function openLightbox() {
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        openTrigger && openTrigger.focus();
+    }
+
+    if (openTrigger)      openTrigger.addEventListener('click', openLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    if (lightboxClose)    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) {
+            closeLightbox();
+        }
+    });
+
 }); // End DOMContentLoaded
